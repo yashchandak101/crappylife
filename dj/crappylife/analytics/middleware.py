@@ -13,9 +13,16 @@ class AnalyticsMiddleware:
             user = request.user if request.user.is_authenticated else None
             ua = request.META.get("HTTP_USER_AGENT", "")
 
-            # Save asynchronously (so it doesn’t slow down response)
+            def save_pageview(path, user, ip_address, user_agent):
+                PageView.objects.create(
+                    path=path,
+                    user=user,
+                    ip_address=ip_address,
+                    user_agent=user_agent
+                )
+
             threading.Thread(
-                target=PageView.objects.create,
+                target=save_pageview,
                 args=(request.path, user, ip, ua)
             ).start()
 
