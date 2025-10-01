@@ -1,0 +1,42 @@
+GET /api/articles/articles/ → List all articles
+
+POST /api/articles/articles/ → Create article (auth required)
+
+GET /api/articles/articles/{id}/ → Article details
+
+GET /api/articles/categories/ → Categories
+
+GET /api/articles/tags/ → Tags
+
+
+
+
+GET /api/search/?q=coffee&category=food&tag=toronto
+
+
+
+API Request to Send Newsletter
+
+POST /api/newsletter/subscribers/send_newsletter/
+
+
+Body:
+
+{
+  "subject": "Our Latest Toronto Updates",
+  "message": "Check out our newest articles and events!"
+}
+
+
+
+
+from apps.notifications.utils import create_notification
+
+create_notification(
+    user=subscriber_user,
+    title="New Newsletter Sent",
+    message="Check your inbox for our latest newsletter!",
+    notif_type="newsletter",
+    link="/newsletters/"
+)
+
