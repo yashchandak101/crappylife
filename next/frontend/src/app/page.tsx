@@ -1,5 +1,6 @@
 import FeaturedCarousel from "@/components/FeaturedCarousel";
 import ArticleCards from "@/components/ui/ArticleCards";
+import CategoryArticles from "@/components/CategoryArticles";
 
 export default function HomePage() {
   return (
@@ -7,6 +8,7 @@ export default function HomePage() {
 
       <div className="md:col-span-2">
         <FeaturedCarousel />
+        <CategoryArticles />
       </div>
 
 
