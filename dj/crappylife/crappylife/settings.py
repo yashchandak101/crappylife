@@ -56,10 +56,9 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Next.js dev
-    "https://crappylife.com", # production
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
-
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"

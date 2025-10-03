@@ -1,13 +1,14 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework import permissions
 from .models import Subscriber
+from .serializers import SubscriberSerializer
 from .utils import send_newsletter
 
 class SubscriberViewSet(viewsets.ModelViewSet):
-    # ...existing code...
+    queryset = Subscriber.objects.all()
+    serializer_class = SubscriberSerializer
+    permission_classes = [permissions.AllowAny]  # or change based on access
 
     @action(detail=False, methods=["post"], permission_classes=[permissions.IsAdminUser])
     def send_newsletter(self, request):

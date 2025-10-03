@@ -24,3 +24,10 @@ class ArticleSerializer(serializers.ModelSerializer):
             "cover_image", "is_featured",
             "published_at", "updated_at"
         ]
+
+        def get_image(self, obj):
+                request = self.context.get("request")
+                if obj.image:
+                    return request.build_absolute_uri(obj.image.url)
+                return None
+    

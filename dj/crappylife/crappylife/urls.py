@@ -27,13 +27,13 @@ router = DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include(router.urls)),
-    path("accounts/", include("accounts.urls")),
-    path("articles/", include("articles.urls")),
-    path("events/", include("events.urls")),
-    path("search/", include("search.urls")),
-    path("newsletter/", include("newsletter.urls")),
-    path("analytics/", include("analytics.urls")),
-    path("notifications/", include("notifications.urls")),
+    path("api/accounts/", include("accounts.urls")),
+    path("api/articles/", include("articles.urls")),
+    path("api/events/", include("events.urls")),
+    path("api/search/", include("search.urls")),
+    path("api/newsletter/", include("newsletter.urls")),
+    path("api/analytics/", include("analytics.urls")),
+    path("api/notifications/", include("notifications.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
